@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 android {
@@ -28,5 +29,10 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     implementation(libs.room.runtime)
     ksp(libs.room.compiler)
+
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.kotlinx.serialization)
+    implementation(libs.kotlinx.serialization.json)
+
     implementation(project(":core:domain"))
 }

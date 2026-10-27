@@ -1,6 +1,6 @@
 package com.n1cks.core.domain.model
 
-import kotlin.time.Instant
+import java.time.Instant
 
 data class CurrencyRate(
     val code: String,
@@ -16,8 +16,8 @@ data class CurrencyRate(
     fun fromRub(rub: Double): Double = rub / rubPerUnit
 }
 
-data class RatesSnapShot(
+data class RatesSnapshot(
     val rates: List<CurrencyRate>,
-    val publishedAd: Instant
+    val publishedAt: Instant,
 )
 
