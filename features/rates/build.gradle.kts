@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -38,8 +39,11 @@ dependencies {
 
     implementation(project(":core:domain"))
     implementation(libs.decompose)
+    implementation(libs.decompose.extensions.compose)
     implementation(libs.androidx.lifecycle.runtime.compose)
 
-    implementation(libs.androidx.compose.material.icons.extended)
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
 
+    implementation(libs.androidx.compose.material.icons.extended)
 }
