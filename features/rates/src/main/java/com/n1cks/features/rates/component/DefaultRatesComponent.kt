@@ -24,6 +24,9 @@ class DefaultRatesComponent(
     private val _state = MutableValue<RatesUiState>(RatesUiState.Loading)
     override val state: Value<RatesUiState> = _state
 
+    private val _searchQuery = MutableValue("")
+    override val searchQuery: Value<String> = _searchQuery
+
     init {
         lifecycle.doOnDestroy { scope.cancel() }
         observeRates()
@@ -58,5 +61,9 @@ class DefaultRatesComponent(
                 }
             }
         }
+    }
+
+    override fun onSearchQueryChange(query: String) {
+        _searchQuery.value = query
     }
 }

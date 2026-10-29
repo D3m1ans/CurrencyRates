@@ -11,9 +11,12 @@ fun RatesScreen(
     component: RatesComponent
 ) {
     val state by component.state.subscribeAsState()
+    val searchQuery by component.searchQuery.subscribeAsState()
 
     RatesContent(
         state = state,
+        searchQuery = searchQuery,
+        onSearchQueryChange = component::onSearchQueryChange,
         onRefresh = { component.refresh() }
     )
 }
