@@ -62,7 +62,9 @@ fun RatesContent(
                         modifier = Modifier.align(Alignment.Center)
                     )
                 }
-                is RatesUiState.Success -> {}
+                is RatesUiState.Success -> {
+                    RatesList(s.snapshot)
+                }
             }
         }
     }
