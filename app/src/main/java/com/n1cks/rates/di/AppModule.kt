@@ -1,6 +1,7 @@
 package com.n1cks.rates.di
 
 import com.n1cks.core.domain.repository.RatesRepository
+import com.n1cks.core.domain.usecase.ConvertRatesUseCase
 import com.n1cks.core.domain.usecase.ObserveRatesUseCases
 import com.n1cks.core.domain.usecase.RefreshRatesUseCase
 import com.n1cks.rates.root.factory.RootComponentFactory
@@ -26,11 +27,17 @@ object AppModule {
 
     @Provides
     @Singleton
+    fun provideConvertRatesUseCase(): ConvertRatesUseCase = ConvertRatesUseCase()
+
+    @Provides
+    @Singleton
     fun provideRootComponentFactory(
         observeRatesUseCases: ObserveRatesUseCases,
         refreshRatesUseCase: RefreshRatesUseCase,
+        convertRatesUseCase: ConvertRatesUseCase,
     ): RootComponentFactory = RootComponentFactoryImpl(
         observeRatesUseCases,
         refreshRatesUseCase,
+        convertRatesUseCase
     )
 }

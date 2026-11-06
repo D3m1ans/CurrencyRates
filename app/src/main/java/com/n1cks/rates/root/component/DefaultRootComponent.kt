@@ -5,6 +5,7 @@ import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.value.Value
+import com.n1cks.core.domain.usecase.ConvertRatesUseCase
 import com.n1cks.core.domain.usecase.ObserveRatesUseCases
 import com.n1cks.core.domain.usecase.RefreshRatesUseCase
 import com.n1cks.features.rates.component.DefaultRatesComponent
@@ -15,6 +16,7 @@ class DefaultRootComponent(
     componentContext: ComponentContext,
     private val observeRatesUseCases: ObserveRatesUseCases,
     private val refreshRatesUseCase: RefreshRatesUseCase,
+    private val convertRatesUseCase: ConvertRatesUseCase,
 ): RootComponent, ComponentContext by componentContext {
 
     private val navigation = StackNavigation<RootConfig>()
@@ -33,7 +35,8 @@ class DefaultRootComponent(
                 DefaultRatesComponent(
                     context,
                     observeRatesUseCases,
-                    refreshRatesUseCase
+                    refreshRatesUseCase,
+                    convertRatesUseCase
                 )
             )
         }
